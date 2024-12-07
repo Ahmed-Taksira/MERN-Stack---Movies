@@ -50,6 +50,20 @@ input::placeholder {
   opacity: 1;
 }
 
+button:disabled {
+  background-color: grey;
+  color: black;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button:disabled:hover {
+  background-color: grey;
+  color: black;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;

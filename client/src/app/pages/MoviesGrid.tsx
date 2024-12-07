@@ -10,6 +10,7 @@ import { MovieService } from "../services/Movie.service";
 import { ToastService } from "../services/ToastService";
 import Loader from "../components/Loader";
 import useMovieStore from "../stores/MovieStore";
+import Pagination from "../components/Pagination";
 
 const MoviesGrid: React.FC = () => {
   const navigate = useNavigate();
@@ -105,17 +106,22 @@ const MoviesGrid: React.FC = () => {
           onClick={() => navigate("/")}
         ></Button>
       </div>
+
       <div style={gridStyle}>
-        {movies.map((movie) => (
-          <Link
-            key={movie._id}
-            style={{ width: "250px" }}
-            to={`/movies/edit`}
-            state={{ movie }}
-          >
-            <MovieCard key={movie._id} movie={movie} />
-          </Link>
-        ))}
+        <Pagination
+          data={movies}
+          itemsPerPage={6}
+          renderItem={(movie) => (
+            <Link
+              key={movie._id}
+              style={{ width: "250px" }}
+              to={`/movies/edit`}
+              state={{ movie }}
+            >
+              <MovieCard key={movie._id} movie={movie} />
+            </Link>
+          )}
+        />
       </div>
     </>
   );

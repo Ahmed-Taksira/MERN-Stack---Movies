@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface ButtonProps {
   text: string;
   width?: string;
+  disabled?: boolean;
   icon?: IconDefinition;
   type: ButtonType;
   onClick: () => void;
@@ -17,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   text,
   type,
   width = "100%",
+  disabled = false,
   icon,
   onClick,
 }) => {
@@ -53,11 +55,12 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   const iconStyle: React.CSSProperties = {
-    pointerEvents: "none", // Prevent hover behavior on the icon itself
+    pointerEvents: "none",
   };
 
   return (
     <button
+      disabled={disabled}
       style={buttonStyle}
       onMouseOver={(e) =>
         Object.assign((e.target as HTMLElement).style, hoverStyle)
