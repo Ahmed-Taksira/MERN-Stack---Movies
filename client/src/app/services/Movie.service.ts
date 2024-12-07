@@ -1,14 +1,14 @@
 import axios from "axios";
 import { Movie } from "../interfaces/Movie.interface";
 
-let url: string = "http://localhost:5000/api/movies";
+let url: string = process.env.NEXT_PUBLIC_SERVER_URL as string;
 
 const getAll = () => {
   return axios.get(url);
 };
 
 const getById = (id: string) => {
-  return axios.get(`${url}/movies/${id}`);
+  return axios.get(`${url}/${id}`);
 };
 
 const create = (movie: Movie) => {

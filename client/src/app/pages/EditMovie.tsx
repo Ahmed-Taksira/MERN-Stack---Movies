@@ -128,6 +128,7 @@ const EditMovie: React.FC = () => {
           <ImageBox
             src={poster}
             onImageUpload={(base64) => setPoster(base64)}
+            disabled={isLoading}
           />
         </div>
 
@@ -135,6 +136,7 @@ const EditMovie: React.FC = () => {
           <InputField
             ref={titleRef}
             label="Title"
+            disabled={isLoading}
             initialValue={title}
             validators={[Validator.isRequired]}
             onChange={(value) => setTitle(value)}
@@ -142,11 +144,16 @@ const EditMovie: React.FC = () => {
           <InputField
             ref={yearRef}
             label="Publishing year"
+            disabled={isLoading}
             initialValue={publishedYear}
             validators={[Validator.isRequired, Validator.isNumber]}
             onChange={(value) => setPublishedYear(value)}
           />
-          {isLoading ? <Loader /> : buttonContainerComponent}
+          {isLoading ? (
+            <Loader style={{ display: "flex", justifyContent: "center" }} />
+          ) : (
+            buttonContainerComponent
+          )}
         </div>
       </div>
     </>

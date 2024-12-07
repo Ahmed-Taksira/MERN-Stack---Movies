@@ -3,6 +3,7 @@ import { Validator } from "../interfaces/Validator.interface";
 
 interface InputFieldProps {
   label: string;
+  disabled?: boolean;
   initialValue?: string;
   type?: string;
   validators: Validator[];
@@ -12,6 +13,7 @@ interface InputFieldProps {
 const InputField = forwardRef((props: InputFieldProps, ref) => {
   const {
     label,
+    disabled = false,
     validators,
     initialValue = "",
     type = "text",
@@ -70,6 +72,7 @@ const InputField = forwardRef((props: InputFieldProps, ref) => {
   return (
     <div style={containerStyle}>
       <input
+        disabled={disabled}
         type={type}
         value={value}
         onChange={handleChange}

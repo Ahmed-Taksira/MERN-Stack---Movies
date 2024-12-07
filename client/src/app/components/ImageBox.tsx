@@ -5,9 +5,14 @@ import { faUpload } from "@fortawesome/free-solid-svg-icons";
 interface ImageBoxProps {
   onImageUpload: (base64: string) => void;
   src?: string;
+  disabled?: boolean;
 }
 
-const ImageBox: React.FC<ImageBoxProps> = ({ onImageUpload, src }) => {
+const ImageBox: React.FC<ImageBoxProps> = ({
+  onImageUpload,
+  src,
+  disabled = false,
+}) => {
   const [image, setImage] = useState<string | null>(src || null);
 
   const handleImageUpload = (file: File) => {
@@ -76,6 +81,7 @@ const ImageBox: React.FC<ImageBoxProps> = ({ onImageUpload, src }) => {
       )}
       <input
         type="file"
+        disabled={disabled}
         accept="image/*"
         id="imageInput"
         style={{ display: "none" }}

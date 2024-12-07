@@ -30,15 +30,6 @@ const MoviesGrid: React.FC = () => {
     );
   }, []);
 
-  const gridStyle: React.CSSProperties = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-    gap: "32px",
-    padding: "16px",
-    maxWidth: "calc((200px + 16px) * 4)",
-    margin: "0 auto",
-  };
-
   const pageStyle: React.CSSProperties = {
     minHeight: "100vh",
     padding: "32px",
@@ -49,6 +40,18 @@ const MoviesGrid: React.FC = () => {
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: "32px",
+  };
+
+  const gridStyle: React.CSSProperties = {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    gap: "32px",
+    padding: "24px",
+    maxWidth: "calc((200px + 16px) * 4)",
+    margin: "0 auto",
+    overflowY: "auto",
+    overflowX: "hidden",
+    maxHeight: "80vh",
   };
 
   const emptyStyle: React.CSSProperties = {
