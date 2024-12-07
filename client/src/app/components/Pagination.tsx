@@ -33,22 +33,24 @@ const Pagination = <T extends unknown>({
     <>
       {currentPageData.map(renderItem)}
 
-      <div style={containerStyle}>
-        <Button
-          text="Previous"
-          type={ButtonType.SECONDARY}
-          width="10vw"
-          onClick={() => changePage(currentPage - 1)}
-          disabled={currentPage === 1}
-        ></Button>
-        <Button
-          text="Next"
-          type={ButtonType.SECONDARY}
-          width="10vw"
-          onClick={() => changePage(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        ></Button>
-      </div>
+      {totalPages > 1 && (
+        <div style={containerStyle}>
+          <Button
+            text="Previous"
+            type={ButtonType.SECONDARY}
+            width="10vw"
+            onClick={() => changePage(currentPage - 1)}
+            disabled={currentPage === 1}
+          ></Button>
+          <Button
+            text="Next"
+            type={ButtonType.SECONDARY}
+            width="10vw"
+            onClick={() => changePage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          ></Button>
+        </div>
+      )}
     </>
   );
 };
