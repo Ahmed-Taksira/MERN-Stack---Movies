@@ -9,25 +9,34 @@ import { Link } from "react-router-dom";
 import { MovieService } from "../services/Movie.service";
 import { ToastService } from "../services/ToastService";
 import Loader from "../components/Loader";
+import useMovieStore from "../stores/MovieStore";
 
 const MoviesGrid: React.FC = () => {
   const navigate = useNavigate();
 
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const setMovies = useMovieStore((state) => state.setMovies);
+  const setDidFetch = useMovieStore((state) => state.setDidFetch);
+
+  const movies = useMovieStore((state) => state.movies);
+  const didFetch = useMovieStore((state) => state.didFetch);
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    MovieService.getAll().then(
-      (res) => {
-        setMovies(res.data);
-        setIsLoading(false);
-      },
-      (error) => {
-        ToastService.error();
-        setIsLoading(false);
-      }
-    );
+    if (!didFetch) {
+      setIsLoading(true);
+      MovieService.getAll().then(
+        (res) => {
+          setMovies(res.data);
+          setDidFetch(true);
+          setIsLoading(false);
+        },
+        (error) => {
+          ToastService.error();
+          setIsLoading(false);
+        }
+      );
+    }
   }, []);
 
   const pageStyle: React.CSSProperties = {

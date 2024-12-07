@@ -9,10 +9,14 @@ import { Movie } from "../interfaces/Movie.interface";
 import { MovieService } from "../services/Movie.service";
 import { ToastService } from "../services/ToastService";
 import Loader from "../components/Loader";
+import useMovieStore from "../stores/MovieStore";
 
 const EditMovie: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const addMovie = useMovieStore((state) => state.addMovie);
+  const editMovie = useMovieStore((state) => state.editMovie);
 
   let isEdit = location.state?.movie ? true : false;
 
@@ -52,6 +56,8 @@ const EditMovie: React.FC = () => {
     MovieService.create(movie).then(
       (res) => {
         ToastService.success("Movie Created Successfully!");
+
+        addMovie(res.data.movie);
         setIsLoading(false);
         navigate("/movies");
       },
@@ -64,8 +70,10 @@ const EditMovie: React.FC = () => {
 
   const updateMovie = (movie: Movie) => {
     MovieService.update(initialMovie._id as string, movie).then(
-      (_) => {
+      (res) => {
         ToastService.success("Movie Updated Successfully!");
+
+        editMovie(res.data.updatedMovie);
         setIsLoading(false);
       },
       (error) => {
