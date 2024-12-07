@@ -74,7 +74,7 @@ const MoviesGrid: React.FC = () => {
 
   const emptyMoviesComponent = (
     <div style={emptyStyle}>
-      <h1>You don't have any Movies</h1>
+      <h1>You have no Movies</h1>
       <Button
         text="Add a new Movie"
         width={"20vw"}
