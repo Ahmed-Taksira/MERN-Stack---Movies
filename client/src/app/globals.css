@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+
+:root {
+  --primary-color: #3ae374;
+  --error-color: #ff4e50;
+  --background-color: #06435d;
+  --input-color: #1f7194;
+  --card-color: #0a2137;
+  --font-primary: "Montserrat", sans-serif;
+  --hover-opacity: 0.8;
+  --transition: opacity 0.3s ease-in-out;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--background-color);
+  color: white;
+  font-family: var(--font-primary);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.pressable:hover {
+  opacity: var(--hover-opacity);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: white;
+}
+
+input::placeholder {
+  color: white;
+  opacity: 1;
+}
