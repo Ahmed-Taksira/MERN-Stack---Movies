@@ -1,3 +1,5 @@
+"use client";
+
 import { ClipLoader } from "react-spinners";
 
 interface LoaderProps {

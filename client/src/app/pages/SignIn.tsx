@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useState } from "react";
 import InputField from "../components/InputField";
 import { Validator } from "../utils/Validator";

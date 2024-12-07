@@ -1,5 +1,6 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import { Movie } from "../interfaces/Movie.interface";
 import MovieCard from "../components/MovieCard";
 import { useNavigate } from "react-router-dom";
 import { faSignOut, faCirclePlus } from "@fortawesome/free-solid-svg-icons";

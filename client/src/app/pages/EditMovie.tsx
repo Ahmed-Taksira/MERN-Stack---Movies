@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useState } from "react";
 import { ButtonType } from "../enums/ButtonType.enum";
 import ImageBox from "../components/ImageBox";

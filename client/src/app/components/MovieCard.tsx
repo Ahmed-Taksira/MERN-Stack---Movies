@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Movie } from "../interfaces/Movie.interface";
 
